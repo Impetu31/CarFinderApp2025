@@ -1,0 +1,87 @@
+/* Importaciones de estilos esenciales */
+@import "@ionic/angular/css/core.css";
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+@import "@ionic/angular/css/flex-utils.css";
+@import "@ionic/angular/css/padding.css";
+
+/* Estilo para el fondo de la aplicación */
+body, ion-app {
+  background: url('/assets/img/fondo.webp') no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  --ion-text-color: #FFFFFF; /* Texto blanco para todo el contenido */
+}
+
+ion-content {
+  --background: transparent; /* Hace que el contenido respete el fondo de body */
+}
+
+/* Colores personalizados */
+:root {
+  --input-background-color: rgba(52, 58, 64, 0.8); /* Fondo oscuro semitransparente para los campos */
+  --input-text-color: #FFFFFF; /* Texto blanco para los campos */
+  --input-placeholder-color: #B0B0B0; /* Color gris claro para el texto de marcador */
+}
+
+/* Estilo para los elementos de formulario */
+ion-item {
+  --background: var(--input-background-color);
+  --color: var(--input-text-color);
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+ion-label {
+  color: var(--input-text-color); /* Texto blanco */
+}
+
+ion-input::part(native) {
+  color: var(--input-text-color); /* Color del texto ingresado */
+  background-color: var(--input-background-color);
+  padding: 12px;
+  border-radius: 8px;
+  --placeholder-color: var(--input-placeholder-color); /* Color del marcador */
+}
+
+/* Botones */
+ion-button {
+  margin-top: 16px;
+  background: linear-gradient(45deg, var(--ion-color-primary), var(--ion-color-secondary));
+  color: #FFFFFF;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+ion-button:hover {
+  transform: scale(1.05);
+}
+
+/* Estilos de alertas */
+ion-alert {
+  --background: #333333; /* Fondo oscuro para el alerta */
+  --color: #FFFFFF; /* Texto blanco en el alerta */
+}
+
+ion-alert .alert-title {
+  font-weight: bold;
+  color: var(--ion-color-primary);
+}
+
+ion-alert .alert-message {
+  color: #b97272;
+}
+
+/* Fondo y colores para la barra de tabs */
+ion-tab-bar {
+  --background: #333; /* Fondo oscuro para la barra de tabs */
+  --color: #8a8a8a; /* Color de los iconos y texto inactivo */
+  --color-selected: #0DCAF0; /* Color de los iconos y texto cuando están seleccionados */
+}
+
+ion-tab-button {
+  --color: #8a8a8a; /* Color del texto inactivo */
+  --color-selected: #0DCAF0; /* Color del texto cuando está seleccionado */
+}

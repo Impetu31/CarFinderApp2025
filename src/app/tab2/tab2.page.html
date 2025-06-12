@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Buscar Auto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Párrafo de experiencia del usuario -->
+  <ion-card>
+    <ion-card-content>
+      <p>
+        ¿Has visto un auto sospechoso? Aquí puedes buscar su patente y verificar si ya ha sido reportado como robado. Si encuentras un reporte, podrás enviar información adicional, como la ubicación y una foto, para ayudar al dueño a recuperarlo.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Formulario para buscar auto -->
+  <ion-item>
+    <ion-label position="floating">Patente</ion-label>
+    <ion-input [(ngModel)]="patente"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="buscarAuto()">Buscar</ion-button>
+
+  <ion-card *ngIf="autoEncontrado">
+    <ion-card-header>
+      <ion-card-title>{{ autoEncontrado.descripcion }}</ion-card-title>
+      <ion-card-subtitle>Patente: {{ autoEncontrado.patente }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Dirección</ion-label>
+        <ion-input [(ngModel)]="direccion"></ion-input>
+      </ion-item>
+
+      <app-image-uploader (imageSelected)="onImageSelected($event)"></app-image-uploader>
+
+      <ion-button expand="block" (click)="enviarNotificacion()">Enviar Notificación</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

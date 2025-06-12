@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarSesion()">Cerrar Sesión</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Mensaje de bienvenida y orientación -->
+  <ion-card>
+    <ion-card-content>
+      <p>
+        Aquí puedes ver tus reportes de autos robados y las notificaciones enviadas por colaboradores, incluyendo la ubicación y fotos que ayudarán a recuperar tu vehículo.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Lista de autos reportados -->
+  <ion-card *ngFor="let auto of autosReportados">
+    <ion-card-header>
+      <ion-card-title>{{ auto.descripcion }}</ion-card-title>
+      <ion-card-subtitle>Patente: {{ auto.patente }}</ion-card-subtitle>
+      <ion-badge color="warning" *ngIf="auto.status === 'robado'">Robado</ion-badge>
+      <ion-badge color="success" *ngIf="auto.status === 'recuperado'">Recuperado</ion-badge>
+    </ion-card-header>
+
+    <ion-card-content>
+      <!-- Notificaciones del colaborador -->
+      <ion-item *ngFor="let notificacion of auto.notificaciones">
+        <ion-label>
+          <h2>Visto en: {{ notificacion.mensaje }}</h2>
+          <p>Fecha: {{ notificacion.fecha | date: 'short' }}</p>
+        </ion-label>
+        <img *ngIf="notificacion.imagenBase64" [src]="notificacion.imagenBase64" width="100" />
+        <ion-button fill="clear" (click)="abrirEnGoogleMaps(notificacion.mensaje)">Ver en Google Maps</ion-button>
+      </ion-item>
+
+      <ion-button expand="block" (click)="cambiarEstado(auto)">
+        Marcar como {{ auto.status === 'robado' ? 'Recuperado' : 'Robado' }}
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" color="danger" (click)="eliminarAutos()">
+    Eliminar Todos los Autos
+  </ion-button>
+</ion-content>
